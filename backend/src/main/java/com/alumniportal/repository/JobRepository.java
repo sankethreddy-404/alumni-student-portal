@@ -1,0 +1,12 @@
+package com.alumniportal.repository;
+
+import com.alumniportal.entity.Job;
+import com.alumniportal.entity.JobStatus;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface JobRepository extends JpaRepository<Job, Long> {
+    List<Job> findByStatus(JobStatus status);
+    List<Job> findByPostedById(Long userId);
+    long countByStatus(JobStatus status);
+}
