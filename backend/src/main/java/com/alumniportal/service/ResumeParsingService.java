@@ -16,9 +16,7 @@ public class ResumeParsingService {
 
     private final Tika tika = new Tika();
 
-    // A reasonably broad, extensible dictionary of common professional/tech skills.
-    // Real-world systems would use an NLP/NER model; this keyword-matching approach
-    // is transparent, dependency-light, and fully deterministic.
+    // Match resume text against a predefined skill dictionary.
     private static final List<String> SKILL_DICTIONARY = List.of(
             "java", "python", "javascript", "typescript", "react", "reactjs", "angular", "vue",
             "node.js", "nodejs", "express", "spring boot", "spring", "hibernate", "django", "flask",

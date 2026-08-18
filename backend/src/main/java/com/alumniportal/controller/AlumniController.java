@@ -56,10 +56,7 @@ public class AlumniController {
         return ResponseEntity.ok(alumniProfileService.getMyProfile(principal.getId()));
     }
 
-    // Auto-fill: from a LinkedIn URL. Since we cannot scrape LinkedIn without their API/auth,
-    // this stores the URL against the profile; skills/company/role must still be filled manually
-    // or via resume upload. This keeps the feature honest rather than faking extraction.
-    @PostMapping("/profile/autofill/linkedin")
+    // Store LinkedIn URL; profile details are populated separately.@PostMapping("/profile/autofill/linkedin")
     public ResponseEntity<AlumniProfileResponse> autofillFromLinkedin(@AuthenticationPrincipal CustomUserDetails principal,
                                                                        @RequestBody LinkedinUrlRequest request) {
         AlumniProfileRequest req = new AlumniProfileRequest();

@@ -27,13 +27,8 @@ public class ProfileVerificationScheduler {
     private int verificationIntervalDays;
 
     /**
-     * Runs once a day at 2 AM server time. Finds every alumni profile that hasn't
-     * been verified in `app.profile.verification-interval-days` (default 180 = ~6 months)
-     * and sends a reminder email, logging it in profile_verification_logs.
-     *
-     * This uses Spring's @Scheduled (Spring Scheduler) + Spring Mail (via NotificationService),
-     * as required by the spec.
-     */
+    * Sends verification reminders for stale alumni profiles.
+    */
     @Scheduled(cron = "0 0 2 * * *")
     public void sendPeriodicVerificationReminders() {
         LocalDateTime cutoff = LocalDateTime.now().minusDays(verificationIntervalDays);
